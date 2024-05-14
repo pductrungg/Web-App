@@ -1,0 +1,18 @@
+<div class="card flex justify-content-center" style="background-color: #f5f5f5">
+    <p-fileUpload
+        multiple="multiple"
+        id="DefaultFileUploadFileInput"
+        name="DefaultFileUploadFileInput[]"
+        [url]="uploadUrl"
+        accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        maxFileSize="100000000"
+        (onUpload)="onUpload($event)"
+        (onBeforeSend)="onBeforeSend($event)"
+    >
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+            </ul>
+        </ng-template>
+    </p-fileUpload>
+</div>
